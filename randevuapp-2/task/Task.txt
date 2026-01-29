@@ -1,0 +1,58 @@
+Randevu Uygulamasý
+
+Konu :
+Basit bir randevu alma uygulamasý
+
+Kullanýlacak teknolojiler :
+Frontend için React, CSS için Tailwind, API için .net Core, Veritabaný için Microsoft SQL Server, kaynak kod yönetimi için github, sms gönderimleri için Dinamik Sms Service API
+
+Amaç :
+Randevu ile çalýþan bir iþletmenin verdiði hizmetler için, müþterilerinin birkaç adýmda randevu alabilmelerini saðlamak
+Bu proje, bir yazýlýmcýnýn react, .net core api, veritabaný, api kullanýmý ve dokümantasyon okuma ve uygulama beceri seviyesi ölçmeyi amaçlamaktadýr.
+
+Ýþ Akýþý : 
+Ýþletmeye ait instagram hesabýna konulacak bir link müþteri tarafýndan týklanarak randevu sayfasý açýlacak.
+Ýlk sayfada Ad, Soyad ve Cep Telefon bilgisi alýnacak, bir devam et butonu olucak.
+Müþteri devam et butonuna bastýðýnda Cep telefonuna 4 haneli bir doðrulama kodu gönderilecek (Dinamik SMS Api üzerinden)
+Müþteri telefonuna gelen bu kodu ekrana giriþ yapýp doðrulamasýný yapýcak, kod gelmez ise 120 sn sonra tekrar bir kod talebinde bulunabilecek, kod hatalý ise sonraki aþamaya geçemeyecek.
+Kod doðrulamasý sonrasýnda ekranda hizmetlerin bir listesi gösterilecek (hizmetler veri tabanýndan hizmetler tablosundan gelicek, veriler .net core API ile çekilecek)
+Müþteri bir hizmet seçimi yapýcak ve bir tarih seçicek, randevu oluþtur butonuna basýcak.
+Bilgileri veritabanýna randevular tablosuna yazýlacak.
+Müþteriye "Randevunuz oluþturuldu, randevu bilgileriniz sms olarak tarafýnýza gönderildi" mesajý gösterilecek.
+Müþteriye randevu bilgilerini içeren bir SMS gönderilecek.
+
+
+Tablo Veri Yapýsý : 
+
+hizmetler
+	hizmet_id INT IDENTITY,
+	hizmet_adi VARCHAR(250)
+
+randevular
+	randevu_id INT IDENTITY, 
+	randevu_adi VARCHAR(50), -- Müþteri Adý
+	randevu_soyadi VARCHAR(50), -- Müþteri Soyadý
+	randevu_hizmet_id INT, -- Hizmet ID
+	randevu_tarih DATETIME, -- Randevu Tarihi
+	randevu_olusturulma_zamani DATETIME -- Kaydýn oluþturuduðu zaman
+
+sms
+	sms_id INT IDENTITY,
+	sms_zaman DATETIME -- Gönderim Zamaný
+	sms_tip CHAR(1) -- 1-Doðrulama Kodu 2-Randevu bilgisi
+	sms_mesaj VARCHAR(1000), -- Mesaj Metni
+
+
+Genel Açýklama :
+Frontend, mobil cihaz uyumlu olmalý,
+Veritabaný CRUD .net core api ile gerçekleþtirilmeli,
+.net core API eriþimi jwt token ile güvenliði saðlanmalý.
+SMS gönderimi için servis bilgilerini, dokümantasyonu ve örnek kodlarý içeren bilgiler mevcuttur.
+Tüm proje kodlarý github'a yüklenicektir.
+
+Sms servisi eriþim þireleri
+UserName : ilogictest-1150
+Þifre    : ilogictest1234..
+Orginator: RANDEVUTEST
+
+
